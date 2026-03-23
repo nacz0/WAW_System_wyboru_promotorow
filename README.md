@@ -8,7 +8,7 @@ Repozytorium w obecnej postaci zawiera materialy dla etapu 1:
 - architekture systemu,
 - opis stosu technologicznego,
 - wstepny model danych,
-- plan implementacji kolejnych etapow,
+- plan realizacji kolejnych etapow kursu,
 - minimalny szkielet aplikacji w technologiach FastAPI, React i PostgreSQL.
 
 ## Stos technologiczny
@@ -55,4 +55,4 @@ Na tym etapie jest to szkielet startowy projektu.
 
 ## Zakres etapu 1
 
-Etap 1 koncentruje sie na zaprojektowaniu rozwiazania, a nie na pelnej implementacji procesow biznesowych. Przygotowane artefakty stanowia baze do dalszych etapow, w tym implementacji logowania, wyboru promotorow, algorytmu przydzialu, raportowania i powiadomien e-mail.
+Etap 1 koncentruje sie na zaprojektowaniu rozwiazania, architekturze i dokumentacji. Minimalny szkielet aplikacji zostal dodany pomocniczo, ale nie stanowi jeszcze pelnej implementacji wymaganej w kolejnych etapach kursu.

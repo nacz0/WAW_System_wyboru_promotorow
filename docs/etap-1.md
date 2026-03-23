@@ -22,9 +22,9 @@ Pierwszy etap obejmuje:
 - opis stosu technologicznego,
 - zaprojektowanie glownych modulow aplikacji,
 - przygotowanie wstepnego modelu danych,
-- przygotowanie struktury repozytorium i szkieletu rozwiazania.
+- przygotowanie dokumentacji przedstawiajacej koncepcje rozwiazania.
 
-Etap 1 nie obejmuje jeszcze pelnej implementacji logiki biznesowej ani gotowego procesu przydzialu promotorow.
+Etap 1 nie obejmuje jeszcze pelnej implementacji logiki biznesowej ani gotowego procesu przydzialu promotorow. Szkielet repozytorium moze zostac przygotowany pomocniczo, ale glownym rezultatem tego etapu pozostaje dokumentacja projektu.
 
 ## 3. Uzytkownicy systemu
 
@@ -371,27 +371,23 @@ frontend/
 docs/
 ```
 
-## 13. Plan kolejnych etapow
+## 13. Plan kolejnych etapow kursu
 
 ### Etap 2
 
-- konfiguracja bazy danych i migracji,
-- implementacja logowania,
-- CRUD dla studentow, promotorow i zespolow,
-- formularze frontendowe.
+- prezentacja czesci serwerowej backend z dzialajacymi endpointami,
+- przygotowanie projektu widokow aplikacji klienckiej,
+- pokazanie podstawowej komunikacji frontend-backend lub makiet widokow,
+- przedstawienie dalszego planu implementacji logiki biznesowej.
 
 ### Etap 3
 
-- implementacja preferencji studentow,
-- walidacja harmonogramu,
-- panel promotora z tematami.
-
-### Etap 4
-
 - implementacja algorytmu przydzialu,
+- implementacja procesu wyboru promotorow i obslugi zespolow,
 - publikacja wynikow,
 - eksport PDF i XLSX,
-- powiadomienia e-mail.
+- powiadomienia e-mail,
+- kompletna dokumentacja projektu, w tym opis stosu technologicznego, instrukcja obslugi i instrukcja instalacji na serwerze.
 
 ## 14. Ryzyka projektowe
 
@@ -400,6 +396,17 @@ docs/
 - poprawna obsluga terminow otwarcia i zamkniecia naboru,
 - zapewnienie deterministycznosci algorytmu.
 
-## 15. Podsumowanie
+## 15. Dokumentacja projektu
+
+Pelna dokumentacja projektu, kompletowana do finalnego etapu, powinna zawierac co najmniej:
+
+- opis architektury systemu,
+- opis stosu technologicznego,
+- opis modelu danych,
+- instrukcje obslugi dla uzytkownikow,
+- instrukcje instalacji i uruchomienia na serwerze,
+- opis uruchomienia srodowiska developerskiego.
+
+## 16. Podsumowanie
 
 Etap 1 definiuje kompletna koncepcje rozwiazania dla systemu wyboru promotorow. Wybrana architektura oparta o React, FastAPI i PostgreSQL jest adekwatna do skali i charakteru problemu. Przygotowany projekt stanowi bezpieczna baze do dalszej implementacji funkcji biznesowych, algorytmu przydzialu oraz raportowania.
