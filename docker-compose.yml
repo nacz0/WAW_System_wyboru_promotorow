@@ -23,6 +23,9 @@ services:
       - db
     ports:
       - "${BACKEND_PORT}:8000"
+    volumes:
+      - ./backend:/app
+      - /app/app/__pycache__
 
   frontend:
     build:
@@ -35,6 +38,9 @@ services:
       - backend
     ports:
       - "${FRONTEND_PORT}:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
 
 volumes:
   postgres_data:
