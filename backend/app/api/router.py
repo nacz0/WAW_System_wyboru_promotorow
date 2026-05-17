@@ -6,6 +6,7 @@ from app.api.routes.demo import router as demo_router
 from app.api.routes.health import router as health_router
 from app.api.routes.overview import router as overview_router
 from app.api.routes.preferences import router as preferences_router
+from app.api.routes.reports import router as reports_router
 from app.api.routes.rounds import router as rounds_router
 from app.api.routes.students import router as students_router
 from app.api.routes.supervisors import router as supervisors_router
@@ -25,3 +26,4 @@ api_router.include_router(rounds_router, prefix="/rounds", tags=["rounds"])
 api_router.include_router(preferences_router, prefix="/preferences", tags=["preferences"])
 api_router.include_router(assignments_router, prefix="/assignments", tags=["assignments"])
 api_router.include_router(demo_router, prefix="/demo", tags=["demo"])
+api_router.include_router(reports_router, prefix="/reports", tags=["reports"])

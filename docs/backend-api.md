@@ -18,6 +18,7 @@ Zaimplementowane moduly:
 - rundy wyboru promotorow,
 - preferencje studentow albo zespolow,
 - deterministyczny przydzial promotorow na podstawie sredniej, preferencji i limitow miejsc.
+- eksport wynikow przydzialu do CSV.
 
 ## Glowne endpointy
 
@@ -43,6 +44,7 @@ Zaimplementowane moduly:
 | `POST` | `/api/assignments/run/{selection_round_id}` | Uruchomienie algorytmu przydzialu |
 | `GET` | `/api/assignments?selection_round_id={id}` | Lista wynikow przydzialu |
 | `POST` | `/api/demo/seed` | Utworzenie danych demonstracyjnych i uruchomienie przydzialu |
+| `GET` | `/api/reports/assignments.csv?selection_round_id={id}` | Eksport wynikow przydzialu do CSV zgodnego z Excelem |
 
 ## Reguly walidacji
 
@@ -74,6 +76,7 @@ Najwazniejsze reguly dostepu:
 - preferencje zespolu moze zlozyc tylko lider zespolu,
 - promotor moze dodawac tematy tylko do swojego profilu,
 - uruchomienie algorytmu przydzialu wymaga roli `admin`,
+- eksport CSV wymaga roli `admin`,
 - `POST /api/demo/seed` pozostaje otwarty, aby szybko przygotowac dane do prezentacji.
 
 ## Algorytm przydzialu
@@ -98,6 +101,7 @@ Najszybsza prezentacja:
 3. Uzyj tokenu w przycisku `Authorize` w Swaggerze.
 4. Sprawdz `GET /api/auth/me`.
 5. Otworz `GET /api/students`, `GET /api/supervisors`, `GET /api/preferences` i `GET /api/assignments`.
+6. Pobierz raport przez `GET /api/reports/assignments.csv`.
 
 Reczny przebieg:
 

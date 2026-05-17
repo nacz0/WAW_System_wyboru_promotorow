@@ -23,5 +23,6 @@ def get_overview() -> dict[str, object]:
             "selection_rounds",
             "preferences",
             "assignments",
+            "reports",
         ],
     }
