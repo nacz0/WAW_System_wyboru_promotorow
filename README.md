@@ -44,9 +44,11 @@ Glowny dokument dla pierwszego etapu znajduje sie tutaj:
 
 - [docs/etap-1.md](c:\Users\natma\Documents\GitHub\WAW_System_wyboru_promotorow\docs\etap-1.md)
 - [docs/etap-1-prezentacja.md](c:\Users\natma\Documents\GitHub\WAW_System_wyboru_promotorow\docs\etap-1-prezentacja.md)
+- [docs/backend-api.md](c:\Users\natma\Documents\GitHub\WAW_System_wyboru_promotorow\docs\backend-api.md)
 
 Plik `etap-1.md` jest pelniejsza dokumentacja techniczna.  
 Plik `etap-1-prezentacja.md` to krotsza wersja prezentacyjna, wygodna do pokazania na zajeciach albo eksportu do PDF.
+Plik `backend-api.md` opisuje dzialajace endpointy backendu przygotowane dla kolejnego etapu.
 
 ## Uruchomienie lokalne
 

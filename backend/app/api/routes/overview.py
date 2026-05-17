@@ -8,18 +8,19 @@ router = APIRouter()
 def get_overview() -> dict[str, object]:
     return {
         "project": "System Wyboru Promotorow",
-        "stage": 1,
+        "stage": 2,
         "stack": {
             "backend": "FastAPI",
             "frontend": "React + TypeScript",
             "database": "PostgreSQL",
         },
         "modules": [
-            "authentication",
             "users",
+            "students",
+            "supervisors",
             "teams",
+            "selection_rounds",
             "preferences",
-            "assignment",
-            "reports",
+            "assignments",
         ],
     }

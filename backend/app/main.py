@@ -1,14 +1,24 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import api_router
 from app.core.config import settings
+from app.db.init_db import init_db
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    init_db()
+    yield
 
 
 app = FastAPI(
     title="System Wyboru Promotorow API",
     version="0.1.0",
     description="Backend projektu wspomagajacego wybor promotorow.",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
