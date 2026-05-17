@@ -10,6 +10,7 @@ Backend udostepnia REST API w FastAPI pod prefiksem `/api`. Dokumentacja interak
 Zaimplementowane moduly:
 
 - health check i opis projektu,
+- logowanie JWT i endpoint aktualnego uzytkownika,
 - uzytkownicy z rolami `admin`, `student`, `supervisor`,
 - studenci i promotorzy,
 - propozycje tematow promotorow,
@@ -24,6 +25,8 @@ Zaimplementowane moduly:
 | --- | --- | --- |
 | `GET` | `/api/health` | Sprawdzenie stanu API |
 | `GET` | `/api/overview` | Opis modulow projektu |
+| `POST` | `/api/auth/login` | Logowanie i pobranie tokenu JWT |
+| `GET` | `/api/auth/me` | Dane aktualnego uzytkownika na podstawie tokenu Bearer |
 | `POST` | `/api/users` | Utworzenie uzytkownika |
 | `GET` | `/api/users` | Lista uzytkownikow |
 | `POST` | `/api/students` | Utworzenie profilu studenta dla uzytkownika z rola `student` |
@@ -71,8 +74,10 @@ Endpoint `POST /api/assignments/run/{selection_round_id}`:
 Najszybsza prezentacja:
 
 1. Uruchom `POST /api/demo/seed`.
-2. Sprawdz wynik zwrocony przez endpoint.
-3. Otworz `GET /api/students`, `GET /api/supervisors`, `GET /api/preferences` i `GET /api/assignments`.
+2. Zaloguj sie przez `POST /api/auth/login`, na przyklad jako `anna.zielinska@student.waw.edu.pl` z haslem `demo1234`.
+3. Uzyj tokenu w przycisku `Authorize` w Swaggerze.
+4. Sprawdz `GET /api/auth/me`.
+5. Otworz `GET /api/students`, `GET /api/supervisors`, `GET /api/preferences` i `GET /api/assignments`.
 
 Reczny przebieg:
 

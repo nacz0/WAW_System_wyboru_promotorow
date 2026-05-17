@@ -15,6 +15,7 @@ def get_overview() -> dict[str, object]:
             "database": "PostgreSQL",
         },
         "modules": [
+            "auth",
             "users",
             "students",
             "supervisors",

@@ -24,6 +24,17 @@ class UserRead(UserBase):
     model_config = ConfigDict(from_attributes=True)
 
 
+class LoginRequest(BaseModel):
+    email: str = Field(max_length=255)
+    password: str = Field(min_length=1, max_length=255)
+
+
+class TokenRead(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    expires_in_minutes: int
+
+
 class StudentBase(BaseModel):
     user_id: int
     album_number: str = Field(min_length=1, max_length=32)

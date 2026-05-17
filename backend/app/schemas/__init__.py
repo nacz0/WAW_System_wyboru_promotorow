@@ -1,6 +1,7 @@
 from app.schemas.entities import (
     AssignmentRead,
     AssignmentRunResult,
+    LoginRequest,
     PreferenceCreate,
     PreferenceRead,
     SelectionRoundCreate,
@@ -14,6 +15,7 @@ from app.schemas.entities import (
     TeamCreate,
     TeamMemberCreate,
     TeamRead,
+    TokenRead,
     TopicProposalCreate,
     TopicProposalRead,
     UserCreate,
@@ -23,6 +25,7 @@ from app.schemas.entities import (
 __all__ = [
     "AssignmentRead",
     "AssignmentRunResult",
+    "LoginRequest",
     "PreferenceCreate",
     "PreferenceRead",
     "SelectionRoundCreate",
@@ -36,6 +39,7 @@ __all__ = [
     "TeamCreate",
     "TeamMemberCreate",
     "TeamRead",
+    "TokenRead",
     "TopicProposalCreate",
     "TopicProposalRead",
     "UserCreate",
