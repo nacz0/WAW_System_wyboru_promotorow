@@ -56,6 +56,26 @@ Zaimplementowane moduly:
 - Po zamknieciu lub przydzieleniu rundy API blokuje dodawanie preferencji.
 - Student moze nalezec tylko do jednego zespolu.
 
+## Autoryzacja
+
+Backend obsluguje logowanie JWT przez `POST /api/auth/login`. Token nalezy podac w Swaggerze przez przycisk `Authorize` jako token Bearer.
+
+Konta demonstracyjne po `POST /api/demo/seed` maja haslo `demo1234`:
+
+- `admin@waw.edu.pl` - rola `admin`,
+- `anna.zielinska@student.waw.edu.pl` - rola `student`,
+- `jan.kowalski@waw.edu.pl` - rola `supervisor`.
+
+Najwazniejsze reguly dostepu:
+
+- `admin` tworzy i edytuje uzytkownikow, studentow, promotorow, zespoly oraz rundy,
+- zalogowani uzytkownicy moga przegladac listy studentow, promotorow, zespolow, rund i wynikow,
+- student moze pobrac swoje dane i zlozyc swoje preferencje,
+- preferencje zespolu moze zlozyc tylko lider zespolu,
+- promotor moze dodawac tematy tylko do swojego profilu,
+- uruchomienie algorytmu przydzialu wymaga roli `admin`,
+- `POST /api/demo/seed` pozostaje otwarty, aby szybko przygotowac dane do prezentacji.
+
 ## Algorytm przydzialu
 
 Endpoint `POST /api/assignments/run/{selection_round_id}`:
@@ -74,7 +94,7 @@ Endpoint `POST /api/assignments/run/{selection_round_id}`:
 Najszybsza prezentacja:
 
 1. Uruchom `POST /api/demo/seed`.
-2. Zaloguj sie przez `POST /api/auth/login`, na przyklad jako `anna.zielinska@student.waw.edu.pl` z haslem `demo1234`.
+2. Zaloguj sie przez `POST /api/auth/login`, na przyklad jako `admin@waw.edu.pl` albo `anna.zielinska@student.waw.edu.pl` z haslem `demo1234`.
 3. Uzyj tokenu w przycisku `Authorize` w Swaggerze.
 4. Sprawdz `GET /api/auth/me`.
 5. Otworz `GET /api/students`, `GET /api/supervisors`, `GET /api/preferences` i `GET /api/assignments`.

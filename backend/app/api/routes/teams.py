@@ -3,8 +3,9 @@ from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.api.deps import get_current_user, require_role
 from app.db.session import get_db
-from app.models import Student, Team, TeamMember
+from app.models import Student, Team, TeamMember, User, UserRole
 from app.schemas import TeamCreate, TeamMemberCreate, TeamRead
 
 
@@ -21,7 +22,11 @@ def _select_leader(team: Team) -> None:
 
 
 @router.post("", response_model=TeamRead, status_code=status.HTTP_201_CREATED)
-def create_team(payload: TeamCreate, db: Session = Depends(get_db)) -> Team:
+def create_team(
+    payload: TeamCreate,
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_role(UserRole.admin)),
+) -> Team:
     team = Team(name=payload.name)
     db.add(team)
     try:
@@ -43,20 +48,36 @@ def create_team(payload: TeamCreate, db: Session = Depends(get_db)) -> Team:
 
 
 @router.get("", response_model=list[TeamRead])
-def list_teams(db: Session = Depends(get_db)) -> list[Team]:
+def list_teams(
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(get_current_user),
+) -> list[Team]:
     return list(db.execute(select(Team).order_by(Team.id)).scalars().all())
 
 
 @router.get("/{team_id}", response_model=TeamRead)
-def get_team(team_id: int, db: Session = Depends(get_db)) -> Team:
+def get_team(
+    team_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+) -> Team:
     team = db.get(Team, team_id)
     if team is None:
         raise HTTPException(status_code=404, detail="team not found")
+    if current_user.role != UserRole.admin and current_user.role != UserRole.supervisor:
+        member_ids = {membership.student_id for membership in team.members}
+        if current_user.student is None or current_user.student.id not in member_ids:
+            raise HTTPException(status_code=403, detail="insufficient permissions")
     return team
 
 
 @router.post("/{team_id}/members", response_model=TeamRead, status_code=status.HTTP_201_CREATED)
-def add_team_member(team_id: int, payload: TeamMemberCreate, db: Session = Depends(get_db)) -> Team:
+def add_team_member(
+    team_id: int,
+    payload: TeamMemberCreate,
+    db: Session = Depends(get_db),
+    _admin: User = Depends(require_role(UserRole.admin)),
+) -> Team:
     team = db.get(Team, team_id)
     if team is None:
         raise HTTPException(status_code=404, detail="team not found")

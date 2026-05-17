@@ -138,6 +138,8 @@ def _get_or_create_preference(
 
 @router.post("/seed", response_model=AssignmentRunResult)
 def seed_demo_data(db: Session = Depends(get_db)) -> AssignmentRunResult:
+    _get_or_create_user(db, "admin@waw.edu.pl", "Admin", "Systemu", UserRole.admin)
+
     kowalski_user = _get_or_create_user(db, "jan.kowalski@waw.edu.pl", "Jan", "Kowalski", UserRole.supervisor)
     nowak_user = _get_or_create_user(db, "marta.nowak@waw.edu.pl", "Marta", "Nowak", UserRole.supervisor)
     wisniewska_user = _get_or_create_user(db, "olga.wisniewska@waw.edu.pl", "Olga", "Wisniewska", UserRole.supervisor)
