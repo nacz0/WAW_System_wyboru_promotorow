@@ -39,6 +39,7 @@ Zaimplementowane moduly:
 | `GET` | `/api/preferences?selection_round_id={id}` | Lista preferencji rundy |
 | `POST` | `/api/assignments/run/{selection_round_id}` | Uruchomienie algorytmu przydzialu |
 | `GET` | `/api/assignments?selection_round_id={id}` | Lista wynikow przydzialu |
+| `POST` | `/api/demo/seed` | Utworzenie danych demonstracyjnych i uruchomienie przydzialu |
 
 ## Reguly walidacji
 
@@ -66,6 +67,14 @@ Endpoint `POST /api/assignments/run/{selection_round_id}`:
 8. Zwraca liste przydzielonych oraz liste nieprzydzielonych z powodem.
 
 ## Przykladowy przebieg demonstracyjny
+
+Najszybsza prezentacja:
+
+1. Uruchom `POST /api/demo/seed`.
+2. Sprawdz wynik zwrocony przez endpoint.
+3. Otworz `GET /api/students`, `GET /api/supervisors`, `GET /api/preferences` i `GET /api/assignments`.
+
+Reczny przebieg:
 
 1. Utworz uzytkownikow promotorow i studentow przez `/api/users`.
 2. Dla studentow utworz profile przez `/api/students`.

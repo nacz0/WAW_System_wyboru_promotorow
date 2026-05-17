@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
 from app.api.routes.assignments import router as assignments_router
+from app.api.routes.demo import router as demo_router
 from app.api.routes.health import router as health_router
 from app.api.routes.overview import router as overview_router
 from app.api.routes.preferences import router as preferences_router
@@ -21,3 +22,4 @@ api_router.include_router(teams_router, prefix="/teams", tags=["teams"])
 api_router.include_router(rounds_router, prefix="/rounds", tags=["rounds"])
 api_router.include_router(preferences_router, prefix="/preferences", tags=["preferences"])
 api_router.include_router(assignments_router, prefix="/assignments", tags=["assignments"])
+api_router.include_router(demo_router, prefix="/demo", tags=["demo"])
