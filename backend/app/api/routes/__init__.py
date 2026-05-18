@@ -1,1 +1,0 @@
-# Rejestr tras API.

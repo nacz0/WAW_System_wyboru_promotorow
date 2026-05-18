@@ -1,0 +1,8 @@
+email;first_name;last_name;password;title;capacity;description
+prof.kowalski@university.edu.pl;Stanisław;Kowalski;password123;Prof. dr hab.;4;Specjalista w dziedzinie systemów rozproszoonych i bezpieczeństwa
+dr.nowak@university.edu.pl;Agnieszka;Nowak;password123;Dr;3;Ekspertka w algorytmach i optymalizacji
+prof.wisniewski@university.edu.pl;Jerzy;Wiśniewski;password123;Prof. dr;5;Nauczyciel akademicki z 20 lat doświadczenia
+dr.dabrowski@university.edu.pl;Krzysztof;Dąbrowski;password123;Dr;2;Badacz w obszarze sztucznej inteligencji i machine learning
+doc.zielinska@university.edu.pl;Ewa;Zielińska;password123;Doc. dr;4;Specjalizacja: bazy danych i data science
+prof.lewandowski@university.edu.pl;Marek;Lewandowski;password123;Prof. dr hab.;3;Lider grupy badawczej nad chmurą obliczeniową
+dr.kaminska@university.edu.pl;Dorota;Kamińska;password123;Dr;3;Doświadczenie w programowaniu frontendowym i UX

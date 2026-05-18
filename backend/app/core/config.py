@@ -1,18 +1,16 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
-
+from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    database_url: str = "postgresql+psycopg://postgres:postgres@db:5432/supervisor_selection"
-    jwt_secret_key: str = "change_me"
-    jwt_algorithm: str = "HS256"
-    access_token_expire_minutes: int = 60
-    cors_origins: list[str] = ["http://localhost:5173"]
+    DATABASE_URL: str = "postgresql://postgres:password@localhost:5432/mydatabase"
+    SECRET_KEY: str = "your_secret_key_here"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    ADMIN_EMAIL: str = "admin@example.com"
+    ADMIN_PASSWORD: str = "admin123"
 
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        env_file_encoding="utf-8",
-        extra="ignore",
-    )
-
+    model_config = {
+        "env_file": ".env",
+        "extra": "ignore"
+    }
 
 settings = Settings()
