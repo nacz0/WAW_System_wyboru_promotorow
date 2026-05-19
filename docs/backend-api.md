@@ -19,6 +19,7 @@ Zaimplementowane moduly:
 - preferencje studentow albo zespolow,
 - deterministyczny przydzial promotorow na podstawie sredniej, preferencji i limitow miejsc.
 - eksport wynikow przydzialu do CSV.
+- testy jednostkowe algorytmu przydzialu.
 
 ## Glowne endpointy
 
@@ -91,6 +92,22 @@ Endpoint `POST /api/assignments/run/{selection_round_id}`:
 6. Przydziela do pierwszego promotora z wystarczajaca liczba miejsc.
 7. Dla zespolu zuzywa tyle miejsc, ilu studentow jest w zespole.
 8. Zwraca liste przydzielonych oraz liste nieprzydzielonych z powodem.
+
+## Testy
+
+Testy algorytmu znajduja sie w `backend/tests/test_assignment.py`. Obejmują:
+
+- pierwszenstwo studenta z wyzsza srednia,
+- brak miejsc u promotora,
+- przydzial zespolu z uwzglednieniem liczby czlonkow,
+- automatyczne wskazanie lidera zespolu,
+- powtarzalnosc wyniku bez duplikowania przydzialow.
+
+Uruchomienie:
+
+```powershell
+python -m pytest backend/tests
+```
 
 ## Przykladowy przebieg demonstracyjny
 

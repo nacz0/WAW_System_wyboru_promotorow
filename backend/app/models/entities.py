@@ -1,10 +1,14 @@
 import enum
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import Boolean, DateTime, Enum, Float, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 
 class UserRole(str, enum.Enum):
@@ -30,7 +34,7 @@ class User(Base):
     last_name: Mapped[str] = mapped_column(String(100), nullable=False)
     role: Mapped[UserRole] = mapped_column(Enum(UserRole, native_enum=False), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now, nullable=False)
 
     student: Mapped["Student | None"] = relationship(back_populates="user", uselist=False)
     supervisor: Mapped["Supervisor | None"] = relationship(back_populates="user", uselist=False)
@@ -123,7 +127,7 @@ class Preference(Base):
     team_id: Mapped[int | None] = mapped_column(ForeignKey("teams.id"))
     priority: Mapped[int] = mapped_column(Integer, nullable=False)
     supervisor_id: Mapped[int] = mapped_column(ForeignKey("supervisors.id"), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now, nullable=False)
 
     selection_round: Mapped[SelectionRound] = relationship()
     student: Mapped[Student | None] = relationship()
@@ -139,7 +143,7 @@ class Assignment(Base):
     student_id: Mapped[int | None] = mapped_column(ForeignKey("students.id"))
     team_id: Mapped[int | None] = mapped_column(ForeignKey("teams.id"))
     supervisor_id: Mapped[int] = mapped_column(ForeignKey("supervisors.id"), nullable=False)
-    assigned_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
+    assigned_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utc_now, nullable=False)
     assignment_source: Mapped[str] = mapped_column(String(50), nullable=False)
 
     selection_round: Mapped[SelectionRound] = relationship()
