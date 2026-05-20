@@ -9,7 +9,7 @@ class Assignment(Base):
     __tablename__ = "assignments"
     __tableargs__ = (
         CheckConstraint(
-            "(student_id IN NOT NULL AND team_id IS NULL) OR (student_id IS NULL AND team_id IN NOT NULL)",
+            "(student_id IS NOT NULL AND team_id IS NULL) OR (student_id IS NULL AND team_id IS NOT NULL)",
             name="ck_assignment_student_or_team",
         ),
     )
